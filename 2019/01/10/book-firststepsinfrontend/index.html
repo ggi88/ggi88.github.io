@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      [book] 프론트엔드 개발 첫걸음 | 
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span></span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/categories/" class="item-link">Categorys</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/categories/" class="menu-link">Categorys</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>[book] 프론트엔드 개발 첫걸음</h2>
+  <p class="post-date">2019-01-10</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><ul>
+<li>책 예제 코드: <a href="https://github.com/okachijs/jsframeworkbook" target="_blank" rel="noopener">https://github.com/okachijs/jsframeworkbook</a></li>
+</ul>
+<h2 id="자바스크립트-프론트엔드-개발-프레임워크의-최신-동향"><a href="#자바스크립트-프론트엔드-개발-프레임워크의-최신-동향" class="headerlink" title="자바스크립트 프론트엔드 개발 프레임워크의 최신 동향"></a>자바스크립트 프론트엔드 개발 프레임워크의 최신 동향</h2><h3 id="프레임워크의-발전"><a href="#프레임워크의-발전" class="headerlink" title="프레임워크의 발전"></a>프레임워크의 발전</h3><ul>
+<li><p>프레임워크 vs 라이브러리</p>
+<ul>
+<li>라이브러리: 프로그램에서 필요로하는 기능을 제 3자가 사용할 수 있는 형태로 모아둔 것</li>
+<li>프레임워크: 애플리케이션의 전체 옥은 일부분의 형태를 규정 혹은 방침화한 것</li>
+</ul>
+</li>
+<li><p>SPA(Single Page Application)</p>
+<ul>
+<li>브라우저 및 브라우저 렌더링 엔진 내부에서 동작하는 웹 애플리케이션</li>
+<li>프라우저에서 최초 접근한 URL을 기점으로 하여 다양한 화면으로 이동을 제공하지만 기본적으로 최초의 JTML 안에서 사용자 인터페이스가 완결됨</li>
+<li>페이지 내의 사용자 인터페이스 변화에 따라 URL이 순차적으로 변화하며, 브라우저 히스토리를 통해 앞의 페이지로 거슬러 올라갈 수 있음</li>
+<li>페이지에서 필요로 하는 데이터는 서버로부터 API등의 형태로 필요할 때마다 단편적으로 제공됨</li>
+</ul>
+</li>
+</ul>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><ul>
+<li>사용자의 조작에 따라 사용자 인터페이스가 동적으로 변화하는 웹 애플리케이션을 개발할 수 있게 해주는 프론트엔드 라이브러리</li>
+<li>A JavaScript libarary fpr building user interfaces</li>
+</ul>
+<h3 id="Angular"><a href="#Angular" class="headerlink" title="Angular"></a>Angular</h3><ul>
+<li>강력한 명형행 도구와 잘 정돈된 폴더 구조, 프로젝트 생성과 동시에 각종 환경이 한번에 갖춰지는 등 필요한 기능을 모두 내장한 프론트엔드 프레임워크</li>
+<li>Angular CLI 명령행 도구</li>
+<li>내부적으로 RxJS 사용됨</li>
+</ul>
+<h3 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h3><ul>
+<li>라이브러리적 측면과 프레임워크적인 측면을 동시에 갖는 프레임워크(프로그레시브 프레임워크)</li>
+<li>React처럼 가상DOM을 가지면서도 React만큼 템플릿이 자바스크립트와 밀접하게 결합하지 않는다</li>
+<li>단일 파일 컴포넌트 스타일</li>
+<li>Vue CLI 지원</li>
+</ul>
+<h3 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h3><ul>
+<li>React의 기술을 기반으로 모바일용 네이티브 애플리케이션을 개발하는 프레임워크</li>
+<li>iOS, 안드로이드 모두 지원하는 애플리케이션 개발</li>
+<li>네이티브 컴포넌트를 React의 JSX로 추상화하는 방식을 취함</li>
+<li>A framework for building native apps with React</li>
+</ul>
+<h3 id="클라이언트-사이드-라우팅"><a href="#클라이언트-사이드-라우팅" class="headerlink" title="클라이언트 사이드 라우팅"></a>클라이언트 사이드 라우팅</h3><ul>
+<li>URL 마다 화면을 만들어두거나 HTML5의 히스토리 API로 이전 버튼을 사용할 수 있게끔 해야한다.</li>
+</ul>
+<h3 id="CSS-in-JS"><a href="#CSS-in-JS" class="headerlink" title="CSS in JS"></a>CSS in JS</h3><ul>
+<li>자바스크립트가 CSS 내장</li>
+<li>여러 라이브러리에서 다른 작성법을 지원하지만 최종적으로 CSS로 변환되어 HTML에 적용</li>
+</ul>
+<h3 id="컴포넌트-지향"><a href="#컴포넌트-지향" class="headerlink" title="컴포넌트 지향"></a>컴포넌트 지향</h3><ul>
+<li>애플리케이션의 기본 정보를 포함하는 페이지를 통째로 하나의 컴포넌트로 정의(루트 컴포넌트)</li>
+<li>루트 컴포넌트 안에 다른 컴포넌트를 포함시키는 형태로 컴포넌트 간의 부모 관계 및 형제 관계를 형성 및 상호작용을 정의</li>
+<li>컴포넌트 지향 애플리케이션을 구현할 땐 컴포넌트 단독으로 필요한 기능을 수행할 수 있는 스타일과 스크립트가 존재해야하기 때문에 캡슐화 사용</li>
+</ul>
+<h3 id="SSR-server-side-rendering-과-프리-렌더링"><a href="#SSR-server-side-rendering-과-프리-렌더링" class="headerlink" title="SSR(server-side rendering)과 프리 렌더링"></a>SSR(server-side rendering)과 프리 렌더링</h3><ul>
+<li>일반적인 웹 애플리케이션에선 사용자가 브라우저를 통해 접근하는 콘텐츠가 이미 삽입된 HTML을 응답으로 받아온다.</li>
+<li>SSR을 적용하면 서버에서 클라이언트로 전달되는 응답 결과에 이미 콘텐츠까지 렌더링을 마친 상태를 전달한다. 이를 구현하기 위해선 서버측에서 SPA에서 만들 렌더링 결과를 완성해야한다.</li>
+<li>프리 렌더링은 요청이 들어왔을 때 대상이 크롤러인지 판단하여 크롤러인 경우 가상 브라우저로 접근하는 방식으로 생성한 다음 저장해둔 렌더링 결과를 제공하는 방식</li>
+</ul>
+<h3 id="가상-DOM-Virtual-DOM"><a href="#가상-DOM-Virtual-DOM" class="headerlink" title="가상 DOM(Virtual DOM)"></a>가상 DOM(Virtual DOM)</h3><ul>
+<li>자바스크립트가 HTML을 렌더링하는 방법 중 하나이다. React에서 가상 DOM을 채택하고 주목받게 됨</li>
+</ul>
+<h3 id="웹-애플리케이션의-MVC"><a href="#웹-애플리케이션의-MVC" class="headerlink" title="웹 애플리케이션의 MVC"></a>웹 애플리케이션의 MVC</h3><ul>
+<li>뷰: 어떻게 외부에 출력할지를 정의하는 부분. 전달형태는 HTML일수도 있고 JSON일수도 있다.</li>
+<li>컨트롤러: URL 요청을 받을 때(라우팅) 필요에 따라 컨트롤러가 모델과 정보를 주고받은 다음 적절한 뷰를 골라 사용자에게 반환</li>
+</ul>
+<h3 id="프론트엔드-애플리케이션의-MV"><a href="#프론트엔드-애플리케이션의-MV" class="headerlink" title="프론트엔드 애플리케이션의 MV"></a>프론트엔드 애플리케이션의 MV</h3><ul>
+<li>프론트엔드 애플리케이션에서 말하는 MV(Model-View)는 MVC 애플리케이션의 뷰 부분에 해당</li>
+<li>웹 애플리케이션에선 본래 콘텐츠가 HTML에 포함된 채로 사용자에 응답을 주기 때문에 View안에 MV와 같은 구성을 할 필요가 없다. 그러나 SPA는 데이터 접근 계층이 추가되거나 URL을 요체하는 처리 등이 끼어들기에 필요하게 되었다.</li>
+</ul>
+<h3 id="MVP-패턴"><a href="#MVP-패턴" class="headerlink" title="MVP 패턴"></a>MVP 패턴</h3><ul>
+<li>MV에 프리젠터(Presenter)가 추가된 패턴</li>
+<li>모델과 뷰 사이에 프리젠터가 위치하여 양자 간의 입출력 인터페이스 역활을 맡는다.</li>
+</ul>
+<h2 id="자바스크립트-프론트엔드-개발을-위한-기초-지식-및-환경-구축"><a href="#자바스크립트-프론트엔드-개발을-위한-기초-지식-및-환경-구축" class="headerlink" title="자바스크립트 프론트엔드 개발을 위한 기초 지식 및 환경 구축"></a>자바스크립트 프론트엔드 개발을 위한 기초 지식 및 환경 구축</h2><h3 id="환경구축"><a href="#환경구축" class="headerlink" title="환경구축"></a>환경구축</h3><ul>
+<li>Node.js 설치: nvm or n 이용</li>
+<li>npm: -g, i, un</li>
+<li>package.json 버전 지정<ul>
+<li>major: 하위 호환성이 깨질 떄 숫자 올라감</li>
+<li>minor: 하위 호환성이 유지되면서 새 기능이 추가될 대 숫자가 올라감</li>
+<li>patch: 버그 수정 등에 숫자가 올라감</li>
+<li>version<ul>
+<li>틸드(~): 지정한 버전의 아래 자리가 최신인 버전으로 업데이트</li>
+<li>캐럿(^): (하위 호환성 유지를 위해)  major 버전을 유지하고 그 이하 버전을 최신으로 업데이트</li>
+<li>x, *, “ “: 와일드카드 문자, 해당하는 모든 버전 허용</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>package-lock.json: 설치된 패키지의 이름과 정확한 버전 정보를 파일에 기재(의존성 정보)</li>
+</ul>
+<h3 id="프론트엔드-빌드-도구"><a href="#프론트엔드-빌드-도구" class="headerlink" title="프론트엔드 빌드 도구"></a>프론트엔드 빌드 도구</h3><ul>
+<li>여러개의 파일로 된 CSS나 자바스크립트를 파일 간 의존관계를 해소하고 하나의 파일로 정리해주는 도구(모듈 번들러) → 파일 요청 횟수 줄어듬</li>
+<li>엔트리, 아웃풋, 로더, 플러그인 으로 구성됨<ul>
+<li>엔트리<ul>
+<li>엔트리(entry)는 webpack이 모듈의 의존관계를 해석하는 시작점이다. </li>
+<li>엔트리로 지정된 자바스크립트 파일부터 모듈 번들링을 시작한다. 별도의 설정을 통해 하나 이상의 시작점을 지정할 수도 있다.</li>
+</ul>
+</li>
+<li>아웃풋<ul>
+<li>아웃풋(output)은 번들된 내용을 출력할 파일을 말한다.</li>
+<li>파일 경로는 정대 경로로 설정해야 하므로 require로 절대 경로 정보를 확인하여 사용한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#프론트엔드 개발 첫걸음" >
+    <span class="tag-code">프론트엔드 개발 첫걸음</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/12/20/delphi-converthalfwidthfullwidth/">
+        <span class="nav-arrow">← </span>
+        
+          [delphi] 반각 전각 변환
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/03/20/book-startvuejs/">
+        
+          [book] Do it Vue.js 입문
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#참고"><span class="toc-nav-text">참고</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#자바스크립트-프론트엔드-개발-프레임워크의-최신-동향"><span class="toc-nav-text">자바스크립트 프론트엔드 개발 프레임워크의 최신 동향</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#프레임워크의-발전"><span class="toc-nav-text">프레임워크의 발전</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#React"><span class="toc-nav-text">React</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Angular"><span class="toc-nav-text">Angular</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Vue-js"><span class="toc-nav-text">Vue.js</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#React-Native"><span class="toc-nav-text">React Native</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#클라이언트-사이드-라우팅"><span class="toc-nav-text">클라이언트 사이드 라우팅</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CSS-in-JS"><span class="toc-nav-text">CSS in JS</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#컴포넌트-지향"><span class="toc-nav-text">컴포넌트 지향</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SSR-server-side-rendering-과-프리-렌더링"><span class="toc-nav-text">SSR(server-side rendering)과 프리 렌더링</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#가상-DOM-Virtual-DOM"><span class="toc-nav-text">가상 DOM(Virtual DOM)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#웹-애플리케이션의-MVC"><span class="toc-nav-text">웹 애플리케이션의 MVC</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#프론트엔드-애플리케이션의-MV"><span class="toc-nav-text">프론트엔드 애플리케이션의 MV</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MVP-패턴"><span class="toc-nav-text">MVP 패턴</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#자바스크립트-프론트엔드-개발을-위한-기초-지식-및-환경-구축"><span class="toc-nav-text">자바스크립트 프론트엔드 개발을 위한 기초 지식 및 환경 구축</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#환경구축"><span class="toc-nav-text">환경구축</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#프론트엔드-빌드-도구"><span class="toc-nav-text">프론트엔드 빌드 도구</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/01/10/book-firststepsinfrontend/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'ggi88';
+    
+    var disqus_url = 'http://yoursite.com/2019/01/10/book-firststepsinfrontend/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank" rel="noopener">Vexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

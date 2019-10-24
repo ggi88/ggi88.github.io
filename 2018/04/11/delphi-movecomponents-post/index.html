@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      [delphi] 컴포넌트 이동하기(Moving components) | 
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span></span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/categories/" class="item-link">Categorys</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/categories/" class="menu-link">Categorys</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>[delphi] 컴포넌트 이동하기(Moving components)</h2>
+  <p class="post-date">2018-04-11</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="폼-안에-컴포넌트-움직이기"><a href="#폼-안에-컴포넌트-움직이기" class="headerlink" title="폼 안에 컴포넌트 움직이기"></a>폼 안에 컴포넌트 움직이기</h2><ul>
+<li>자유도 높은 화면 구성이 필요해서 데모를 만듬</li>
+<li>components의 parent와 control index 를 활용함</li>
+<li>Delphi 2006 에서 작성</li>
+</ul>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unit</span> Main;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">uses</span></span><br><span class="line">  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,</span><br><span class="line">  Dialogs, ExtCtrls, sPanel, StdCtrls, sButton, Math;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">  <span class="title">TForm6</span> = <span class="keyword">class</span>(TForm)</span><br><span class="line">    fnlBG: TFlowPanel;</span><br><span class="line">    pnlMenu: TsPanel;</span><br><span class="line">    btnEdit: TsButton;</span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">FormCreate</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">OnFormMouseDown</span><span class="params">(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer)</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">OnFormMouseMove</span><span class="params">(Sender: TObject; Shift: TShiftState; X, Y: Integer)</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">OnFormMouseUp</span><span class="params">(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer)</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">btnEditClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line">  <span class="keyword">private</span></span><br><span class="line">    <span class="comment">&#123; Private declarations &#125;</span></span><br><span class="line">    bEditMode, bItemSelected: Boolean;</span><br><span class="line">    NewPos, OldPos: TPoint;</span><br><span class="line">    arrForms: <span class="keyword">array</span> <span class="keyword">of</span> TForm;</span><br><span class="line">    arrButtons: <span class="keyword">array</span> <span class="keyword">of</span> TButton;</span><br><span class="line">  <span class="keyword">public</span></span><br><span class="line">    <span class="comment">&#123; Public declarations &#125;</span></span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span></span><br><span class="line">  MAX_FORM = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  Form6: TForm6;</span><br><span class="line"></span><br><span class="line"><span class="keyword">implementation</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&#123;$R *.dfm&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm6</span>.<span class="title">FormCreate</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  i: Integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">// Init</span></span><br><span class="line">  bEditMode := False;</span><br><span class="line">  bItemSelected := False;</span><br><span class="line">  SetLength(arrForms, MAX_FORM);</span><br><span class="line">  SetLength(arrButtons, MAX_FORM);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span> <span class="keyword">to</span> MAX_FORM - <span class="number">1</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    <span class="comment">// Set Form</span></span><br><span class="line">    arrForms[i] := TForm.Create(Self);</span><br><span class="line">    arrForms[i].BorderStyle := bsNone;</span><br><span class="line">    Randomize;</span><br><span class="line">    arrForms[i].Color := RGB(Random(<span class="number">255</span>), Random(<span class="number">255</span>), Random(<span class="number">255</span>));</span><br><span class="line">    arrForms[i].Visible := false;</span><br><span class="line">    arrForms[i].AlignWithMargins := True;</span><br><span class="line">    arrForms[i].Caption := IntToStr(i);</span><br><span class="line">    arrForms[i].Parent := fnlBG;</span><br><span class="line">    arrForms[i].Height := <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> i <span class="keyword">of</span></span><br><span class="line">      <span class="number">0</span>, <span class="number">6</span>:</span><br><span class="line">        arrForms[i].Width := <span class="number">800</span>;</span><br><span class="line">      <span class="number">1</span>..<span class="number">4</span>:</span><br><span class="line">        arrForms[i].Width := <span class="number">400</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        arrForms[i].Width := <span class="number">200</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Set Button</span></span><br><span class="line">    arrButtons[i] := TButton.Create(Self);</span><br><span class="line">    arrButtons[i].Caption := <span class="string">'Move'</span>;</span><br><span class="line">    arrButtons[i].Visible := False;</span><br><span class="line">    arrButtons[i].Parent := arrForms[i];</span><br><span class="line"></span><br><span class="line">    arrButtons[i].OnMouseDown := OnFormMouseDown;</span><br><span class="line">    arrButtons[i].OnMouseMove := OnFormMouseMove;</span><br><span class="line">    arrButtons[i].OnMouseUp := OnFormMouseUp;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// show</span></span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span> <span class="keyword">to</span> MAX_FORM - <span class="number">1</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    arrForms[i].Visible := True;</span><br><span class="line">    arrButtons[i].Visible := True;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm6</span>.<span class="title">OnFormMouseDown</span><span class="params">(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  bItemSelected := True;</span><br><span class="line">  <span class="keyword">if</span> (Button = mbLeft) <span class="keyword">then</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    (Sender <span class="keyword">as</span> TButton).Parent.Parent := Self;</span><br><span class="line">    SetCapture((Sender <span class="keyword">as</span> TButton).Handle);</span><br><span class="line">    GetCursorPos(OldPos);</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm6</span>.<span class="title">OnFormMouseMove</span><span class="params">(Sender: TObject; Shift: TShiftState; X, Y: Integer)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> bItemSelected <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">Exit</span>;</span><br><span class="line">  GetCursorPos(NewPos);</span><br><span class="line">  (Sender <span class="keyword">as</span> TButton).Parent.Left := (Sender <span class="keyword">as</span> TButton).Parent.Left - OldPos.X + NewPos.X;</span><br><span class="line">  (Sender <span class="keyword">as</span> TButton).Parent.Top := (Sender <span class="keyword">as</span> TButton).Parent.Top - OldPos.Y + NewPos.Y;</span><br><span class="line">  OldPos := NewPos;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm6</span>.<span class="title">OnFormMouseUp</span><span class="params">(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  TmpPos: TPoint;</span><br><span class="line">  AHWN: HWND;</span><br><span class="line">  nIdx: Integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> bItemSelected <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">Exit</span>;</span><br><span class="line"></span><br><span class="line">  (Sender <span class="keyword">as</span> TButton).Parent.Parent := fnlBG;</span><br><span class="line">  GetCursorPos(TmpPos);</span><br><span class="line">  AHWN := WindowFromPoint(TmpPos);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> FindControl(AHWN) <span class="keyword">is</span> TForm <span class="keyword">then</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    nIdx := fnlBG.GetControlIndex(FindControl(AHWN) <span class="keyword">as</span> TForm);</span><br><span class="line">    fnlBG.SetControlIndex((Sender <span class="keyword">as</span> TButton).Parent, nIdx);</span><br><span class="line">    ReleaseCapture;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">  bItemSelected := False;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm6</span>.<span class="title">btnEditClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  i: Integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  bEditMode := <span class="keyword">not</span> bEditMode;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span> <span class="keyword">to</span> MAX_FORM - <span class="number">1</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> bEditMode <span class="keyword">then</span></span><br><span class="line">      arrForms[i].BorderStyle := bsToolWindow</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      arrForms[i].BorderStyle := bsNone;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="file-link"><a href="#file-link" class="headerlink" title="file link"></a>file link</h3><ul>
+<li><a href="https://drive.google.com/file/d/1SquBp3JLa-ru7HvgoyTME5n7XtklCDLy/view?usp=sharing" target="_blank" rel="noopener">MoveComponent</a></li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#delphi" >
+    <span class="tag-code">delphi</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/04/09/delphi-pcapheader-post/">
+        <span class="nav-arrow">← </span>
+        
+          [delphi] pcap header 살펴보기
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/04/12/delphi-modalshowtip-post/">
+        
+          [delphi] 모달 창 띄울 시 배경 효과
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#폼-안에-컴포넌트-움직이기"><span class="toc-nav-text">폼 안에 컴포넌트 움직이기</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#code"><span class="toc-nav-text">code</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#file-link"><span class="toc-nav-text">file link</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/04/11/delphi-movecomponents-post/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'ggi88';
+    
+    var disqus_url = 'http://yoursite.com/2018/04/11/delphi-movecomponents-post/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank" rel="noopener">Vexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

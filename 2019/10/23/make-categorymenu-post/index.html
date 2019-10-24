@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      [hexo] vexo 테마에서 카테고리 메뉴 추가하기 | 
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span></span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/categories/" class="item-link">Categorys</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/categories/" class="menu-link">Categorys</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>[hexo] vexo 테마에서 카테고리 메뉴 추가하기</h2>
+  <p class="post-date">2019-10-23</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="hexo-에서-vexo-테마-사용-시-카테고리-추가하기"><a href="#hexo-에서-vexo-테마-사용-시-카테고리-추가하기" class="headerlink" title="hexo 에서 vexo 테마 사용 시 카테고리 추가하기"></a>hexo 에서 vexo 테마 사용 시 카테고리 추가하기</h2><h3 id="vexo-config-설정"><a href="#vexo-config-설정" class="headerlink" title="vexo config 설정"></a>vexo config 설정</h3><p><img src="/images/vexo_config_menu.png" alt=""></p>
+<h3 id="vexo-카테고리-폴더-및-파일-추가"><a href="#vexo-카테고리-폴더-및-파일-추가" class="headerlink" title="vexo 카테고리 폴더 및 파일 추가"></a>vexo 카테고리 폴더 및 파일 추가</h3><ul>
+<li><p><img src="/images/vexo_tree.png" alt=""></p>
+</li>
+<li><p>vexo/_source/categories/index.md</p>
+</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Categories</span><br><span class="line">layout: categories</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>vexo/layout/_partial/categories.ejs</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;% categories.each(function(category) &#123; %&gt;</span><br><span class="line">  &lt;a href=&quot;&lt;%- url_for(config.root + config.category_dir) %&gt;#&lt;%= category.name %&gt;&quot; &gt;</span><br><span class="line">    &lt;span class=&quot;category-code&quot;&gt;&lt;%= category.name %&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line">&lt;% &#125;) %&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>vexo/layout/_third-party/categories</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;article-banner&quot;&gt;</span><br><span class="line">  &lt;h2&gt;Categories&lt;/h2&gt;</span><br><span class="line">  &lt;p class=&quot;post-date&quot;&gt;카테고리&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;main class=&quot;app-body&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;category-cloud&quot;&gt;</span><br><span class="line">    &lt;% site.categories.map(function(category, index) &#123; %&gt;</span><br><span class="line">      &lt;a class=&quot;category&lt;%= Math.round(Math.random() * 3) %&gt;&quot; data-name=&quot;category-&lt;%= category.name %&gt;&quot;&gt;&lt;%= category.name %&gt;&lt;/a&gt;</span><br><span class="line">    &lt;% &#125;) %&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;% site.categories.map(function(category, index)&#123; %&gt;</span><br><span class="line">    &lt;div class=&quot;category-list&quot;&gt;</span><br><span class="line">      &lt;h3 class=&quot;category-name&quot; id=&quot;category-&lt;%= category.name %&gt;&quot;&gt;&lt;%= category.name %&gt;&lt;/h3&gt;</span><br><span class="line">      &lt;% category.posts.map(function(post) &#123; %&gt;</span><br><span class="line">        &lt;ul class=&quot;category-preview&quot;&gt;</span><br><span class="line">          &lt;li&gt;</span><br><span class="line">            &lt;a href=&quot;&lt;%- config.root %&gt;&lt;%- post.path %&gt;&quot;&gt;&lt;%- post.title || &quot;Untitled&quot; %&gt;&lt;/a&gt;</span><br><span class="line">          &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">        &lt;% &#125;) %&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;% &#125;) %&gt;</span><br><span class="line">&lt;/main&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  (function () &#123;</span><br><span class="line">    var url = &apos;&lt;%= config.url %&gt;/&lt;%= page.path %&gt;&apos;</span><br><span class="line">    $(&apos;#article-banner&apos;).geopattern(url)</span><br><span class="line">    $(&apos;.header&apos;).removeClass(&apos;fixed-header&apos;)</span><br><span class="line"></span><br><span class="line">    var category = location.hash.replace(&apos;#&apos;, &apos;&apos;)</span><br><span class="line">    if (category) &#123;</span><br><span class="line">      var categoryId = &quot;#category-&quot; + category;</span><br><span class="line">      $(&quot;html, body&quot;).animate(&#123;</span><br><span class="line">        scrollTop: $(categoryId).offset().top </span><br><span class="line">      &#125;, 400)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="hexo-config-설정"><a href="#hexo-config-설정" class="headerlink" title="hexo config 설정"></a>hexo config 설정</h3><p><img src="/images/hexo_directory.png" alt=""></p>
+<h3 id="post-파일-해더에-카테고리-등록"><a href="#post-파일-해더에-카테고리-등록" class="headerlink" title="post 파일 해더에 카테고리 등록"></a>post 파일 해더에 카테고리 등록</h3><p>ex)</p>
+<pre><code class="markdown">---
+layout: post
+title:  "[delphi] 스마트 포인터"
+date:   2018-03-29 00:00:00
+categories: 
+<span class="bullet">- </span>delphi
+tags:
+<span class="bullet">- </span>delphi
+<span class="bullet">- </span>스마트 포인터
+<span class="bullet">- </span>스마트 가드
+published: true
+---</code></pre>
+<h3 id="카테고리-메뉴-확인"><a href="#카테고리-메뉴-확인" class="headerlink" title="카테고리 메뉴 확인"></a>카테고리 메뉴 확인</h3><p><img src="/images/hexo_category.png" alt=""></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#hexo" >
+    <span class="tag-code">hexo</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/03/20/book-startvuejs/">
+        <span class="nav-arrow">← </span>
+        
+          [book] Do it Vue.js 입문
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#hexo-에서-vexo-테마-사용-시-카테고리-추가하기"><span class="toc-nav-text">hexo 에서 vexo 테마 사용 시 카테고리 추가하기</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#vexo-config-설정"><span class="toc-nav-text">vexo config 설정</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#vexo-카테고리-폴더-및-파일-추가"><span class="toc-nav-text">vexo 카테고리 폴더 및 파일 추가</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#hexo-config-설정"><span class="toc-nav-text">hexo config 설정</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#post-파일-해더에-카테고리-등록"><span class="toc-nav-text">post 파일 해더에 카테고리 등록</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#카테고리-메뉴-확인"><span class="toc-nav-text">카테고리 메뉴 확인</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/10/23/make-categorymenu-post/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'ggi88';
+    
+    var disqus_url = 'http://yoursite.com/2019/10/23/make-categorymenu-post/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank" rel="noopener">Vexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

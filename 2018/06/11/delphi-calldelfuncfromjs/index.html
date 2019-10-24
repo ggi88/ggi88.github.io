@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      [delphi] TWebbrowser 내 javascript 에서 delphi 함수 호출 | 
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span></span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/categories/" class="item-link">Categorys</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/categories/" class="menu-link">Categorys</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>[delphi] TWebbrowser 내 javascript 에서 delphi 함수 호출</h2>
+  <p class="post-date">2018-06-11</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="자바스크립트에서-델파이-함수-호출"><a href="#자바스크립트에서-델파이-함수-호출" class="headerlink" title="자바스크립트에서 델파이 함수 호출"></a>자바스크립트에서 델파이 함수 호출</h2><ul>
+<li>TWebbrowser를 활용하다보면 델파이 함수를 웹페이지에서 호출해야할 필요가 생긴다.</li>
+<li><a href="http://blog.hjf.pe.kr/378" target="_blank" rel="noopener">파이어몽키에서는 컴포넌트 메소드를 통해 이벤트를 가져올 수 있어보인다.</a></li>
+<li><a href="https://www.delmadang.com/community/bbs_view.asp?bbsNo=21&bbsCat=0&st=S&keyword=%uC790%uBC14%uC2A4%uD06C%uB9BD%uD2B8&indx=449443&keyword1=%C0%DA%B9%D9%BD%BA%C5%A9%B8%B3%C6%AE&page=1%20%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%EC%A7%88%EB%8B%B5%EB%9E%80%EC%9D%98%20%EC%98%81%ED%9B%88%EB%8B%98%EC%9D%98%20%EB%8B%B5%EB%B3%80%20%EC%B0%B8%EA%B3%A0%ED%95%98%EC%84%B8%EC%9A%94.%20https://www.delmadang.com/community/bbs_view.asp?bbsNo=17&bbsCat=0&st=C&keyword=twebbrowser&indx=440673&keyword1=twebbrowser&page=2" target="_blank" rel="noopener">검색하면 델파이를 통해 자바스크립트를 사용하는 방법 위주로 나오는 듯하다.</a></li>
+<li><a href="http://delphidabbler.com/articles?article=22&part=4" target="_blank" rel="noopener">정석(?)은 com과 같이 외부객체를 활용하는 방법으로 보이는데…</a></li>
+<li>살펴보니 TWebbrowser 상태 프로퍼티를 활용하는 꼼수적인 방법이 있다. </li>
+<li>방법은 자바스크립트 이벤트를 통해 상태 텍스트를 변경, TWebbrowser에선 상태 텍스트의 변경 이벤트를 확인 후 변경된 상태 텍스트을 활용하여 원하는 델파이 핸들 내 함수명과 일치된 함수를 실행한다.</li>
+</ul>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><ul>
+<li><p>index.html</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> &lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset="utf-8"&gt;</span><br><span class="line">    &lt;script language="javascript"&gt;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">DelMessage</span><span class="params">()</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">            window.status = 'delFunc_Message';</span></span></span><br><span class="line"><span class="function"><span class="comment">            window.status = '';</span></span></span><br><span class="line"><span class="function"><span class="comment">        &#125;</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">        <span class="title">function</span> <span class="title">DelForm</span><span class="params">()</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">            window.status = 'delFunc_Form';</span></span></span><br><span class="line"><span class="function"><span class="comment">            window.status = '';</span></span></span><br><span class="line"><span class="function"><span class="comment">        &#125;</span></span></span><br><span class="line"><span class="function">        <span class="title">function</span> <span class="title">DelMainMessage</span><span class="params">()</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">            window.status = 'delFunc_MainMessage';</span></span></span><br><span class="line"><span class="function"><span class="comment">            window.status = '';</span></span></span><br><span class="line"><span class="function"><span class="comment">        &#125;</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">        <span class="title">function</span> <span class="title">DelMainForm</span><span class="params">()</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">            window.status = 'delFunc_MainForm';</span></span></span><br><span class="line"><span class="function"><span class="comment">            window.status = '';</span></span></span><br><span class="line"><span class="function"><span class="comment">        &#125;</span></span></span><br><span class="line"><span class="function">    &lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="function">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="function">    &lt;<span class="title">input</span> <span class="title">type</span>="<span class="title">button</span>" <span class="title">value</span>="나와라 델파이 <span class="title">TCallFunc</span> 메시지" <span class="title">onclick</span>='<span class="title">DelMessage</span><span class="params">()</span>'&gt;</span></span><br><span class="line"><span class="function">    &lt;<span class="title">input</span> <span class="title">type</span>="<span class="title">button</span>" <span class="title">value</span>="나와라 델파이 <span class="title">TCallFunc</span> 폼" <span class="title">onclick</span>='<span class="title">DelForm</span><span class="params">()</span>'&gt;</span></span><br><span class="line"><span class="function">    &lt;<span class="title">input</span> <span class="title">type</span>="<span class="title">button</span>" <span class="title">value</span>="나와라 델파이 메인 메시지" <span class="title">onclick</span>='<span class="title">DelMainMessage</span><span class="params">()</span>'&gt;</span></span><br><span class="line"><span class="function">    &lt;<span class="title">input</span> <span class="title">type</span>="<span class="title">button</span>" <span class="title">value</span>="나와라 델파이 메인 폼" <span class="title">onclick</span>='<span class="title">DelMainForm</span><span class="params">()</span>'&gt;</span></span><br><span class="line"><span class="function">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="function">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Main.pas</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unit</span> Main;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">uses</span></span><br><span class="line">  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,</span><br><span class="line">  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.OleCtrls, SHDocVw, Vcl.StdCtrls,</span><br><span class="line">  Vcl.ExtCtrls, Vcl.ComCtrls;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">  <span class="title">TFMain</span> = <span class="keyword">class</span>(TForm)</span><br><span class="line">    pnl: TPanel;</span><br><span class="line">    btnMsg: TButton;</span><br><span class="line">    btnForm: TButton;</span><br><span class="line">    mmoLog: TMemo;</span><br><span class="line">    Splitter1: TSplitter;</span><br><span class="line">    PageControl1: TPageControl;</span><br><span class="line">    TabSheet1: TTabSheet;</span><br><span class="line">    wbs: TWebBrowser;</span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">FormCreate</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">wbsStatusTextChange</span><span class="params">(ASender: TObject; <span class="keyword">const</span> Text: WideString)</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">btnFormClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">btnMsgClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line">  <span class="keyword">private</span></span><br><span class="line">    <span class="comment">&#123; Private declarations &#125;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">AddLog</span><span class="params">(s: <span class="keyword">String</span>)</span>;</span></span><br><span class="line">  <span class="keyword">public</span></span><br><span class="line">    <span class="comment">&#123; Public declarations &#125;</span></span><br><span class="line">  <span class="keyword">published</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">delFunc_MainMessage</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">delFunc_MainForm</span>;</span></span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  FMain: TFMain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">implementation</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">uses</span></span><br><span class="line">  UCommon, UCallFunc;</span><br><span class="line"></span><br><span class="line"><span class="meta">&#123;$R *.dfm&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFMain</span>.<span class="title">AddLog</span><span class="params">(s: <span class="keyword">String</span>)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  mmoLog.Lines.Add(s);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFMain</span>.<span class="title">btnFormClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  f: TForm;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  f := TForm.Create(<span class="keyword">nil</span>);</span><br><span class="line">  f.Caption := <span class="string">'메인 폼'</span>;</span><br><span class="line">  f.ShowModal;</span><br><span class="line">  f.Free;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFMain</span>.<span class="title">btnMsgClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  ShowMessage(<span class="string">'메인 메시지'</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFMain</span>.<span class="title">delFunc_MainForm</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  btnForm.Click;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFMain</span>.<span class="title">delFunc_MainMessage</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  btnMsg.Click;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFMain</span>.<span class="title">FormCreate</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  wbs.Navigate2(ExtractFilePath(Application.ExeName) + <span class="string">'index.html'</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFMain</span>.<span class="title">wbsStatusTextChange</span><span class="params">(ASender: TObject; <span class="keyword">const</span> Text: WideString)</span>;</span></span><br><span class="line"><span class="keyword">const</span></span><br><span class="line">  CST_DEL_FUNC = <span class="string">'delFunc_'</span>;</span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  sFuncName: <span class="keyword">String</span>;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  sFuncName := Text;</span><br><span class="line">  <span class="keyword">if</span> Pos(CST_DEL_FUNC, sFuncName) = <span class="number">0</span> <span class="keyword">then</span> <span class="keyword">Exit</span>;</span><br><span class="line"></span><br><span class="line">  AddLog(<span class="string">'Web Status: '</span> + <span class="keyword">String</span>(Text));</span><br><span class="line">  SetTimeOut( <span class="function"><span class="keyword">procedure</span></span></span><br><span class="line"><span class="function">    <span class="title">begin</span></span></span><br><span class="line"><span class="function">      <span class="comment">// 사용할 함수가 있는 클래스를 넘겨줘야한다.</span></span></span><br><span class="line"><span class="function">      <span class="title">CallMethod</span><span class="params">(g_CallFunc, sFuncName)</span></span></span><br><span class="line"><span class="function"><span class="comment">//      CallMethod(Self, sFuncName)</span></span></span><br><span class="line"><span class="function">    <span class="title">end</span>, 1);</span></span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>UCallFunc.pas</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unit</span> UCallFunc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">uses</span></span><br><span class="line">  Vcl.Dialogs, Vcl.Forms;</span><br><span class="line"></span><br><span class="line"><span class="meta">&#123;$M+&#125;</span></span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">  TCallFunc = <span class="keyword">class</span></span><br><span class="line">  <span class="keyword">private</span></span><br><span class="line">  <span class="keyword">public</span></span><br><span class="line">  <span class="keyword">published</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">delFunc_Message</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">delFunc_Form</span>;</span></span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"><span class="meta">&#123;$M-&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  g_CallFunc: TCallFunc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">implementation</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#123; TCallFunc &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TCallFunc</span>.<span class="title">delFunc_Form</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  f: TForm;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  f := TForm.Create(<span class="keyword">nil</span>);</span><br><span class="line">  f.Caption := <span class="string">'TCallFunc 폼'</span>;</span><br><span class="line">  f.ShowModal;</span><br><span class="line">  f.Free;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TCallFunc</span>.<span class="title">delFunc_Message</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  ShowMessage(<span class="string">'TCallFunc 메시지 테스트'</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">initialization</span></span><br><span class="line">  g_CallFunc := TCallFunc.Create;</span><br><span class="line"></span><br><span class="line"><span class="keyword">finalization</span></span><br><span class="line">  g_CallFunc.Free;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>UCommon.pas</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unit</span> UCommon;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">uses</span></span><br><span class="line">  System.SysUtils, System.Classes, System.Threading, System.Rtti;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">SetTimeOut</span><span class="params">(proc: TProc; nInterval: Integer = 100)</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수 이름으로 함수 호출</span></span><br><span class="line"><span class="comment">// 취향것 사용</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">CallMethod</span><span class="params">(obj: TObject; AMethodName: <span class="keyword">string</span>)</span>;</span> <span class="keyword">overload</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CallMethod</span><span class="params">(obj: TObject; AMethodName: <span class="keyword">string</span>; AParameters: TArray&lt;TValue&gt;)</span>:</span> TValue; <span class="keyword">overload</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">implementation</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">SetTimeOut</span><span class="params">(proc: TProc; nInterval: Integer = 100)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  TThread.CreateAnonymousThread( <span class="function"><span class="keyword">procedure</span></span></span><br><span class="line"><span class="function">    <span class="title">begin</span></span></span><br><span class="line"><span class="function">    <span class="title">Sleep</span><span class="params">(nInterval)</span>;</span></span><br><span class="line">  	<span class="comment">// 내부 코드</span></span><br><span class="line">    TThread.Synchronize( TThread.CurrentThread, <span class="function"><span class="keyword">procedure</span></span></span><br><span class="line"><span class="function">      <span class="title">begin</span></span></span><br><span class="line"><span class="function">    		<span class="comment">// GUI 코드</span></span></span><br><span class="line"><span class="function">        <span class="title">proc</span></span></span><br><span class="line"><span class="function">      <span class="title">end</span>);</span></span><br><span class="line">    <span class="keyword">end</span>).Start;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">CallMethod</span><span class="params">(obj: TObject; AMethodName: <span class="keyword">string</span>)</span>;</span></span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">  TExecute = <span class="function"><span class="keyword">procedure</span> <span class="title">of</span> <span class="title">object</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  e: TExecute;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  TMethod(e).Data := obj;</span><br><span class="line">  TMethod(e).Code := obj.MethodAddress(AMethodName);</span><br><span class="line">  <span class="keyword">if</span> Assigned(e) <span class="keyword">then</span> e;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CallMethod</span><span class="params">(obj: TObject; AMethodName: <span class="keyword">string</span>; AParameters: TArray&lt;TValue&gt;)</span>:</span> TValue;</span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">// IF문을 사용하는 방식</span></span><br><span class="line"><span class="comment">begin</span></span><br><span class="line"><span class="comment">  if AMethodName = 'callDelphiMethodFromJS' then</span></span><br><span class="line"><span class="comment">    callDelphiMethodFromJS</span></span><br><span class="line"><span class="comment">  else if AMethodName = 'callDelphiMethodFromJSWithParam' then</span></span><br><span class="line"><span class="comment">    callDelphiMethodFromJSWithParam(AParameters[0].AsString, AParameters[1].AsString);</span></span><br><span class="line"><span class="comment">end;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">// RTTI로 메소드이름으로 메소드 호출하는 방식(published, public 으로 메소드가 선언되야함)</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  RttiCtx: TRttiContext;</span><br><span class="line">  RttiTyp: TRttiType;</span><br><span class="line">  RttiMtd: TRttiMethod;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  RttiCtx := TRttiContext.Create;</span><br><span class="line">  RttiTyp := RttiCtx.GetType(obj.ClassInfo);</span><br><span class="line">  RttiMtd := <span class="keyword">nil</span>;</span><br><span class="line">  <span class="keyword">if</span> Assigned(RttiTyp) <span class="keyword">then</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    RttiMtd := RttiTyp.GetMethod(AMethodName);</span><br><span class="line">    <span class="keyword">if</span> Assigned(RttiMtd) <span class="keyword">then</span></span><br><span class="line">      Result := RttiMtd.Invoke(obj, AParameters);</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">  RttiMtd.Free;</span><br><span class="line">  RttiTyp.Free;</span><br><span class="line">  RttiCtx.Free;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p><a href="https://github.com/ggi88/SampleProject/tree/master/Delphi/XE8/CallDelFuncFromJS" target="_blank" rel="noopener">CallDelphiFunctionFromJavascript</a></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#delphi" >
+    <span class="tag-code">delphi</span>
+  </a>
+
+  <a href="/tags#webbrowser" >
+    <span class="tag-code">webbrowser</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/06/11/delphi-ellipsislabel/">
+        <span class="nav-arrow">← </span>
+        
+          [delphi] Ellipsis Label
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/06/11/delphi-ttask-for/">
+        
+          [delphi] TTask 와 for문
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#자바스크립트에서-델파이-함수-호출"><span class="toc-nav-text">자바스크립트에서 델파이 함수 호출</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#code"><span class="toc-nav-text">code</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#source"><span class="toc-nav-text">source</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/06/11/delphi-calldelfuncfromjs/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'ggi88';
+    
+    var disqus_url = 'http://yoursite.com/2018/06/11/delphi-calldelfuncfromjs/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank" rel="noopener">Vexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
