@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2020/01/16/2020-gaol/</loc>
+        <lastmod>2020-01-16T09:01:17.937Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/10/23/make-categorymenu-post/</loc>
         <lastmod>2019-10-23T09:22:27.281Z</lastmod>
         <changefreq>weekly</changefreq>
