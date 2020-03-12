@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2020/03/12/oracle-timestamp/</loc>
+        <lastmod>2020-03-12T02:24:14.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2020/01/16/2020-gaol/</loc>
         <lastmod>2020-01-20T06:38:54.926Z</lastmod>
         <changefreq>weekly</changefreq>
