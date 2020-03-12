@@ -8,6 +8,150 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/10/23/make-categorymenu-post/</loc>
+        <lastmod>2020-03-12T02:25:08.896Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/03/20/book-startvuejs/</loc>
+        <lastmod>2020-03-12T02:25:07.757Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/01/10/book-firststepsinfrontend/</loc>
+        <lastmod>2020-03-12T02:25:06.058Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/12/20/delphi-converthalfwidthfullwidth/</loc>
+        <lastmod>2020-03-12T02:25:05.119Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/06/11/delphi-ttask-for/</loc>
+        <lastmod>2020-03-12T02:25:04.302Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/06/11/delphi-calldelfuncfromjs/</loc>
+        <lastmod>2020-03-12T02:25:03.387Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/06/11/delphi-ellipsislabel/</loc>
+        <lastmod>2020-03-12T02:25:02.551Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/06/11/batch-hyperv/</loc>
+        <lastmod>2020-03-12T02:25:01.749Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/19/network-dnp3/</loc>
+        <lastmod>2020-03-12T02:25:00.865Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/19/jekyll-category/</loc>
+        <lastmod>2020-03-12T02:25:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/19/delphi-bitflags/</loc>
+        <lastmod>2020-03-12T02:24:59.184Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/12/delphi-modalshowtip-post/</loc>
+        <lastmod>2020-03-12T02:24:58.244Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/11/delphi-movecomponents-post/</loc>
+        <lastmod>2020-03-12T02:24:57.457Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/09/delphi-pcapheader-post/</loc>
+        <lastmod>2020-03-12T02:24:56.387Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/05/book-softskill-post/</loc>
+        <lastmod>2020-03-12T02:24:55.634Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/04/03/delphi-type-post/</loc>
+        <lastmod>2020-03-12T02:24:51.060Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/03/29/delphi-pointer-post/</loc>
+        <lastmod>2020-03-12T02:24:50.061Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/03/28/delphi-aync-post/</loc>
+        <lastmod>2020-03-12T02:24:49.032Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2020/03/12/oracle-timestamp/</loc>
         <lastmod>2020-03-12T02:24:14.374Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,150 +162,6 @@
     <url>
         <loc>http://yoursite.com/2020/01/16/2020-gaol/</loc>
         <lastmod>2020-01-20T06:38:54.926Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2019/10/23/make-categorymenu-post/</loc>
-        <lastmod>2019-10-23T09:22:27.281Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2019/03/20/book-startvuejs/</loc>
-        <lastmod>2019-10-23T08:55:31.209Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2019/01/10/book-firststepsinfrontend/</loc>
-        <lastmod>2019-10-23T08:55:22.231Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/12/20/delphi-converthalfwidthfullwidth/</loc>
-        <lastmod>2019-10-23T08:54:56.409Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/06/11/delphi-ttask-for/</loc>
-        <lastmod>2019-10-23T08:54:45.671Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/06/11/delphi-calldelfuncfromjs/</loc>
-        <lastmod>2019-10-23T08:54:32.842Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/06/11/delphi-ellipsislabel/</loc>
-        <lastmod>2019-10-23T08:54:17.464Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/06/11/batch-hyperv/</loc>
-        <lastmod>2019-10-23T08:53:33.329Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/19/network-dnp3/</loc>
-        <lastmod>2019-10-23T08:53:19.917Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/19/jekyll-category/</loc>
-        <lastmod>2019-10-23T08:53:07.614Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/19/delphi-bitflags/</loc>
-        <lastmod>2019-10-23T08:53:03.969Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/12/delphi-modalshowtip-post/</loc>
-        <lastmod>2019-10-23T08:52:51.597Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/11/delphi-movecomponents-post/</loc>
-        <lastmod>2019-10-23T08:52:33.089Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/09/delphi-pcapheader-post/</loc>
-        <lastmod>2019-10-23T08:52:21.826Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/05/book-softskill-post/</loc>
-        <lastmod>2019-10-23T08:52:10.713Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/03/delphi-type-post/</loc>
-        <lastmod>2019-10-23T08:51:59.796Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/03/29/delphi-pointer-post/</loc>
-        <lastmod>2019-10-23T08:51:55.012Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/03/28/delphi-aync-post/</loc>
-        <lastmod>2019-10-23T08:51:48.567Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
