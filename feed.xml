@@ -8,11 +8,11 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 18 Jun 2020 07:51:07 GMT</pubDate>
+    <pubDate>Thu, 18 Jun 2020 07:59:53 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>[delphi] 반각 전각 변환</title>
+      <title>[delphi] ODAC</title>
       <link>http://yoursite.com/2020/06/18/delphi-odac/</link>
       <guid>http://yoursite.com/2020/06/18/delphi-odac/</guid>
       <pubDate>Wed, 17 Jun 2020 15:00:00 GMT</pubDate>
