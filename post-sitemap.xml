@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2020/06/18/delphi-odac/</loc>
+        <lastmod>2020-06-18T07:51:07.764Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/10/23/make-categorymenu-post/</loc>
         <lastmod>2020-03-12T02:25:08.896Z</lastmod>
         <changefreq>weekly</changefreq>
