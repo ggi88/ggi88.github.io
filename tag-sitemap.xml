@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>http://yoursite.com/tags/react/</loc>
+        <lastmod>2020-07-01T08:49:35.555Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/book/</loc>
+        <lastmod>2020-07-01T08:49:35.555Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/ODAC/</loc>
         <lastmod>2020-06-18T08:00:45.295Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -46,13 +60,6 @@
 
     <url>
         <loc>http://yoursite.com/tags/Do-it-Vue-js-%25EC%259E%2585%25EB%25AC%25B8/</loc>
-        <lastmod>2020-03-12T02:25:07.757Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/book/</loc>
         <lastmod>2020-03-12T02:25:07.757Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
