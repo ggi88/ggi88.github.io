@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  <link rel="canonical" href="http://yoursite.com/2018/03/29/delphi-smartpointer-post/"/>
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      [delphi] 스마트 포인터 | 
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+
+
+  
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-116608951-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span></span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/categories/" class="item-link">Categorys</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/categories/" class="menu-link">Categorys</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>[delphi] 스마트 포인터</h2>
+  <p class="post-date">2018-03-29</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="스마트-포인터"><a href="#스마트-포인터" class="headerlink" title="스마트 포인터"></a>스마트 포인터</h2><p>자동 객체 해제 클래스 테스트</p>
+<ul>
+<li><p>함수 안에서 제한적 사용</p>
+</li>
+<li><p>개선 필요</p>
+</li>
+</ul>
+<h3 id="코드-1"><a href="#코드-1" class="headerlink" title="코드 1"></a>코드 1</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">unit</span> uSmartPointer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DoSmartPointer</span><span class="params">( <span class="keyword">out</span> Reference: TObject; Instance: TObject )</span>:</span> IUnknown;</span><br><span class="line"></span><br><span class="line"><span class="keyword">implementation</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">  <span class="title">TSmartPointer</span> = <span class="keyword">class</span>( TInterfacedObject )</span><br><span class="line">  <span class="keyword">private</span></span><br><span class="line">    FInstance: TObject;</span><br><span class="line">  <span class="keyword">public</span></span><br><span class="line">    <span class="function"><span class="keyword">constructor</span> <span class="title">Create</span><span class="params">( AInstance: TObject )</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">destructor</span> <span class="title">Destroy</span>;</span> <span class="keyword">override</span>;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">&#123; TSmartPointer &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DoSmartPointer</span><span class="params">( <span class="keyword">out</span> Reference: TObject; Instance: TObject )</span>:</span> IUnknown;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  Result := TSmartPointer.Create( Instance );</span><br><span class="line">  TObject(Reference) := Instance;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">constructor</span> <span class="title">TSmartPointer</span>.<span class="title">Create</span><span class="params">(AInstance: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  FInstance := AInstance;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">destructor</span> <span class="title">TSmartPointer</span>.<span class="title">Destroy</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  FInstance.Free;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">inherited</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>예</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">GetData</span>;</span></span><br><span class="line"><span class="keyword">var</span> l: TList;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  DoSmartPointer( TObject(l), TList.Create )</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="코드-2"><a href="#코드-2" class="headerlink" title="코드 2"></a>코드 2</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">unit</span> SmartPointerClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">uses</span></span><br><span class="line">  Generics.Defaults;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">  TSmartPointer&lt;T: <span class="keyword">class</span>, <span class="function"><span class="keyword">constructor</span>&gt; = <span class="title">record</span></span></span><br><span class="line"><span class="function">  <span class="title">strict</span> <span class="title">private</span></span></span><br><span class="line"><span class="function">    <span class="title">FValue</span>:</span> T;</span><br><span class="line">    FFreeTheValue: IInterface;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">GetValue</span>:</span> T;</span><br><span class="line">  <span class="keyword">private</span></span><br><span class="line">    <span class="keyword">type</span></span><br><span class="line">      <span class="title">TFreeTheValue</span> = <span class="keyword">class</span> (TInterfacedObject)</span><br><span class="line">      <span class="keyword">private</span></span><br><span class="line">        fObjectToFree: TObject;</span><br><span class="line">      <span class="keyword">public</span></span><br><span class="line">        <span class="function"><span class="keyword">constructor</span> <span class="title">Create</span><span class="params">(anObjectToFree: TObject)</span>;</span></span><br><span class="line">        <span class="function"><span class="keyword">destructor</span> <span class="title">Destroy</span>;</span> <span class="keyword">override</span>;</span><br><span class="line">      <span class="keyword">end</span>;</span><br><span class="line">  <span class="keyword">public</span></span><br><span class="line">    <span class="function"><span class="keyword">constructor</span> <span class="title">Create</span><span class="params">(AValue: T)</span>;</span> <span class="keyword">overload</span>;</span><br><span class="line">    <span class="function"><span class="keyword">procedure</span> <span class="title">Create</span>;</span> <span class="keyword">overload</span>;</span><br><span class="line">    <span class="keyword">class</span> <span class="keyword">operator</span> Implicit(AValue: T): TSmartPointer&lt;T&gt;;</span><br><span class="line">    <span class="keyword">class</span> <span class="keyword">operator</span> Implicit(smart: TSmartPointer &lt;T&gt;): T;</span><br><span class="line">    <span class="keyword">property</span> Value: T <span class="keyword">read</span> GetValue;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">implementation</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#123; TSmartPointer&lt;T&gt; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">constructor</span> <span class="title">TSmartPointer</span>&lt;<span class="title">T</span>&gt;.<span class="title">Create</span><span class="params">(AValue: T)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  FValue := AValue;</span><br><span class="line">  FFreeTheValue := TFreeTheValue.Create(FValue);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TSmartPointer</span>&lt;<span class="title">T</span>&gt;.<span class="title">Create</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  TSmartPointer&lt;T&gt;.Create (T.Create);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TSmartPointer</span>&lt;<span class="title">T</span>&gt;.<span class="title">GetValue</span>:</span> T;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> Assigned(FFreeTheValue) <span class="keyword">then</span></span><br><span class="line">    self := TSmartPointer&lt;T&gt;.Create (T.Create);</span><br><span class="line">  Result := FValue;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="keyword">operator</span> TSmartPointer&lt;T&gt;.Implicit(smart: TSmartPointer&lt;T&gt;): T;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  Result := Smart.Value;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="keyword">operator</span> TSmartPointer&lt;T&gt;.Implicit(AValue: T): TSmartPointer&lt;T&gt;;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  Result := TSmartPointer&lt;T&gt;.Create(AValue);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">&#123; TSmartPointer&lt;T&gt;.TFreeTheValue &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">constructor</span> <span class="title">TSmartPointer</span>&lt;<span class="title">T</span>&gt;.<span class="title">TFreeTheValue</span>.<span class="title">Create</span><span class="params">(anObjectToFree: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  fObjectToFree := anObjectToFree;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">destructor</span> <span class="title">TSmartPointer</span>&lt;<span class="title">T</span>&gt;.<span class="title">TFreeTheValue</span>.<span class="title">Destroy</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  fObjectToFree.Free;</span><br><span class="line">  <span class="keyword">inherited</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>예</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFormSmartPointers</span>.<span class="title">btnImplicitCreateClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  smartP: TSmartPointer&lt;TStringList&gt;;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="comment">//  smartP.Create;</span></span><br><span class="line">  smartP.Value.Add(<span class="string">'foo'</span>);</span><br><span class="line">  Log (<span class="string">'Count: '</span> + IntToStr (smartP.Value.Count));</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFormSmartPointers</span>.<span class="title">btnLeakClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  sl: TStringList;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="comment">// memory leak</span></span><br><span class="line">  sl := TStringList.Create;</span><br><span class="line">  sl.Add(<span class="string">'foo'</span>);</span><br><span class="line">  Log (<span class="string">'Count: '</span> + IntToStr (sl.Count));</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFormSmartPointers</span>.<span class="title">btnSmartClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  sl: TStringList;</span><br><span class="line">  smartP: TSmartPointer&lt;TStringList&gt;;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  sl := TStringList.Create;</span><br><span class="line">  smartP := sl;</span><br><span class="line">  sl.Add(<span class="string">'foo'</span>);</span><br><span class="line">  Log (<span class="string">'Count: '</span> + IntToStr (sl.Count));</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TFormSmartPointers</span>.<span class="title">btnSmartShortClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  smartP: TSmartPointer&lt;TStringList&gt;;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  smartP := TStringList.Create;</span><br><span class="line">  smartP.Value.Add(<span class="string">'foo'</span>);</span><br><span class="line">  TStringList(smartP).Add(<span class="string">'foo2'</span>);</span><br><span class="line">  Log (<span class="string">'Count: '</span> + IntToStr (TStringList(smartP).Count));</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="코드-3"><a href="#코드-3" class="headerlink" title="코드 3"></a>코드 3</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">unit</span> ObjectGuardClass</span><br><span class="line"></span><br><span class="line">integerface</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">  IObjectGuard&lt;T: <span class="keyword">class</span>&gt; = <span class="keyword">interface</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Value</span>:</span> T</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">  TObjectGuard&lt;T: <span class="keyword">class</span>&gt; = <span class="keyword">class</span>(TInterfacedObject, IObjectGuard&lt;T&gt;)</span><br><span class="line">  <span class="keyword">private</span></span><br><span class="line">    FValue: T;</span><br><span class="line">  <span class="keyword">public</span></span><br><span class="line">    <span class="function"><span class="keyword">constructor</span> <span class="title">Create</span><span class="params">(Obj: T)</span>;</span></span><br><span class="line">    <span class="function"><span class="keyword">destructor</span> <span class="title">Destroy</span>;</span> <span class="keyword">override</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Value</span>:</span> T;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">  TSmartPtr&lt;T: <span class="keyword">class</span>&gt; = <span class="keyword">record</span></span><br><span class="line">  <span class="keyword">private</span></span><br><span class="line">    FGuard: IObjectGuard&lt;T&gt;;</span><br><span class="line">  <span class="keyword">public</span></span><br><span class="line">    <span class="keyword">class</span> <span class="keyword">operator</span> Explicit(<span class="keyword">const</span> Obj: T): TSmartPtr&lt;T&gt;;</span><br><span class="line">    <span class="keyword">class</span> <span class="keyword">operator</span> Implicit(<span class="keyword">const</span> Ptr: TSmartPtr&lt;T&gt;): T;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">implementation</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#123; SmartPtr&lt;T&gt; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="keyword">operator</span> TSmartPtr&lt;T&gt;.Explicit(<span class="keyword">const</span> Obj: T): TSmartPtr&lt;T&gt;;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  Result.FGuard := TObjectGuard&lt;T&gt;.Create(Obj);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="keyword">operator</span> TSmartPtr&lt;T&gt;.Implicit(<span class="keyword">const</span> Ptr: TSmartPtr&lt;T&gt;): T;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span> Ptr.FGuard &lt;&gt; <span class="keyword">nil</span> <span class="keyword">then</span></span><br><span class="line">    Result := Ptr.FGuard.Value</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    Result := <span class="keyword">nil</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">&#123; TObjectGuard&lt;T&gt; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">constructor</span> <span class="title">TObjectGuard</span>&lt;<span class="title">T</span>&gt;.<span class="title">Crete</span><span class="params">(Obj: T)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  FValue := Obj;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">destructor</span> <span class="title">TObjectGuard</span>&lt;<span class="title">T</span>&gt;.<span class="title">Destory</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  FValue.Free;</span><br><span class="line">  <span class="keyword">inherited</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TObjectGuard</span>&lt;<span class="title">T</span>&gt;.<span class="title">Value</span>:</span> T;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  Result := FValue;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+<p>예</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm</span>.<span class="title">btnSmartPtrClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  SL: TStringList;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  SL := TSmartPtr&lt;TStringList&gt;(TStringList.Create());</span><br><span class="line">  SL.Add(<span class="string">'Foo'</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="참조"><a href="#참조" class="headerlink" title="참조"></a>참조</h3><ul>
+<li><a href="https://msdn.microsoft.com/ko-kr/library/hh279674.aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/ko-kr/library/hh279674.aspx</a></li>
+<li><a href="https://github.com/marcocantu/DelphiSessions/tree/master/DelphiLanguageCodeRage2018/02_SmartPointers" target="_blank" rel="noopener">https://github.com/marcocantu/DelphiSessions/tree/master/DelphiLanguageCodeRage2018/02_SmartPointers</a></li>
+<li><a href="https://millgo.tistory.com/12" target="_blank" rel="noopener">https://millgo.tistory.com/12</a></li>
+<li><a href="http://rvelthuis.blogspot.com/2017/09/smart-pointers.html" target="_blank" rel="noopener">http://rvelthuis.blogspot.com/2017/09/smart-pointers.html</a></li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#delphi" >
+    <span class="tag-code">delphi</span>
+  </a>
+
+  <a href="/tags#스마트 포인터" >
+    <span class="tag-code">스마트 포인터</span>
+  </a>
+
+  <a href="/tags#스마트 가드" >
+    <span class="tag-code">스마트 가드</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/03/28/delphi-aync-post/">
+        <span class="nav-arrow">← </span>
+        
+          [delphi] 비동기 함수
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/04/03/delphi-type-post/">
+        
+          [delphi] 타입 변환
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#스마트-포인터"><span class="toc-nav-text">스마트 포인터</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#코드-1"><span class="toc-nav-text">코드 1</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#코드-2"><span class="toc-nav-text">코드 2</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#코드-3"><span class="toc-nav-text">코드 3</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#참조"><span class="toc-nav-text">참조</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/03/29/delphi-smartpointer-post/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'ggi88';
+    
+    var disqus_url = 'http://yoursite.com/2018/03/29/delphi-smartpointer-post/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo" target="_blank" rel="noopener">Vexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
